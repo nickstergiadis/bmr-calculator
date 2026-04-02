@@ -9,6 +9,7 @@ import { MealCards } from './components/MealCards';
 import { ResultsCard } from './components/ResultsCard';
 import { Section } from './components/Section';
 import { WeeklyPlanCards } from './components/WeeklyPlanCards';
+import { macroTemplateContent } from './data/content';
 import type { CalculatorInput } from './types';
 
 const initialValues: CalculatorInput = {
@@ -73,21 +74,10 @@ export default function App() {
           </div>
         </Section>
 
-        <Section
-          id="templates"
-          title="Example calorie and macro templates"
-          subtitle="The examples below are not personalized meal plans. They are simple examples to show what a daily calorie target can look like once it is broken into meals, snacks, and approximate macro totals."
-        >
+        <Section id="templates" title={macroTemplateContent.heading} subtitle={macroTemplateContent.introBody}>
           <div className="space-y-4">
-            <p className="text-sm leading-6 text-slate-700">
-              Calories set the overall intake. Macros change the composition of that intake. Protein is often especially
-              relevant for active adults and people doing resistance exercise, but exact numbers do not need to be
-              perfect to be useful.
-            </p>
-            <p className="text-sm font-medium text-slate-700">
-              For individualized planning, especially if you have medical, digestive, or complex weight-related
-              concerns, speak with a registered dietitian.
-            </p>
+            <p className="text-sm leading-6 text-slate-700">{macroTemplateContent.introBodyExtended}</p>
+            <p className="text-sm font-medium text-slate-700">{macroTemplateContent.smallNote}</p>
             <MealCards />
           </div>
         </Section>
