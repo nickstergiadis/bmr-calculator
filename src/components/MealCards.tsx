@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { macroTemplateContent } from '../data/content';
-import type { MacroTemplate } from '../types';
+import type { CalorieTemplate } from '../types/content';
 
-function buildTemplateCopy(template: MacroTemplate) {
+function buildTemplateCopy(template: CalorieTemplate) {
   const mealStructure = template.mealStructure.map((meal) => `- ${meal}`).join('\n');
   const exampleDay = template.exampleDay.map((entry) => `- ${entry.label}: ${entry.text}`).join('\n');
 
@@ -33,7 +33,7 @@ function buildTemplateCopy(template: MacroTemplate) {
 export function MealCards() {
   const [copiedTitle, setCopiedTitle] = useState<string | null>(null);
 
-  const copyTemplate = async (template: MacroTemplate) => {
+  const copyTemplate = async (template: CalorieTemplate) => {
     await navigator.clipboard.writeText(buildTemplateCopy(template));
     setCopiedTitle(template.title);
     window.setTimeout(() => setCopiedTitle(null), 2000);
