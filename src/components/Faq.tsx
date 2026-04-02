@@ -35,11 +35,14 @@ const faqItems = [
 
 export function Faq() {
   return (
-    <div className="space-y-3">
+    <div className="grid gap-3 md:grid-cols-2">
       {faqItems.map((item) => (
-        <details key={item.q} className="rounded-xl border border-slate-200 bg-white p-4 shadow-soft">
-          <summary className="cursor-pointer text-sm font-semibold text-slate-900">{item.q}</summary>
-          <p className="mt-2 text-sm leading-6 text-slate-600">{item.a}</p>
+        <details key={item.q} className="group rounded-xl border border-slate-200 bg-white p-4 shadow-soft">
+          <summary className="flex cursor-pointer list-none items-start justify-between gap-4 text-sm font-semibold text-slate-900 marker:content-none">
+            {item.q}
+            <span className="mt-0.5 text-xs text-slate-500 transition group-open:rotate-45">+</span>
+          </summary>
+          <p className="mt-3 border-t border-slate-200 pt-3 text-sm leading-6 text-slate-600">{item.a}</p>
         </details>
       ))}
     </div>

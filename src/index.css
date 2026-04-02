@@ -8,8 +8,17 @@
     'Apple Color Emoji', 'Segoe UI Emoji';
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   min-width: 320px;
   background: #f8fafc;
+}
+
+:focus-visible {
+  outline: 2px solid #2f7d85;
+  outline-offset: 2px;
 }

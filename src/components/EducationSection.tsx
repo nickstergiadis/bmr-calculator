@@ -39,23 +39,28 @@ export function EducationSection() {
     <div className="grid gap-4 md:grid-cols-3">
       {sections.map((section) => (
         <article key={section.title} className="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft">
-          <h3 className="text-base font-semibold text-slate-900">{section.title}</h3>
-          <div className="mt-2 space-y-3 text-sm leading-6 text-slate-700">
+          <h3 className="text-base font-semibold leading-6 text-slate-900">{section.title}</h3>
+          <div className="mt-3 space-y-2.5 text-sm leading-6 text-slate-700">
             {section.paragraphs.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
             ))}
           </div>
 
           {section.callout ? (
-            <p className="mt-4 rounded-xl bg-slate-100 p-3 text-sm font-medium text-slate-800">{section.callout}</p>
+            <p className="mt-4 rounded-xl border border-slate-200 bg-slate-50 p-3 text-sm font-medium text-slate-800">
+              {section.callout}
+            </p>
           ) : null}
 
           {section.bullets ? (
-            <ul className="mt-4 space-y-2 text-sm leading-6 text-slate-700">
-              {section.bullets.map((bullet) => (
-                <li key={bullet}>• {bullet}</li>
-              ))}
-            </ul>
+            <div className="mt-4 rounded-xl border border-clinical-200 bg-clinical-50 p-3">
+              <h4 className="text-sm font-semibold text-slate-900">Quick scan summary</h4>
+              <ul className="mt-2 space-y-1.5 text-sm leading-6 text-slate-700">
+                {section.bullets.map((bullet) => (
+                  <li key={bullet}>• {bullet}</li>
+                ))}
+              </ul>
+            </div>
           ) : null}
         </article>
       ))}

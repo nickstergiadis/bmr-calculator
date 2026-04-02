@@ -55,7 +55,7 @@ export function MealCards() {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-5">
       <article className="rounded-2xl border border-slate-200 bg-white p-6 shadow-soft">
         <h3 className="text-xl font-semibold tracking-tight text-slate-900">
           {macroTemplateContent.featuredExplainerHeading}
@@ -67,9 +67,9 @@ export function MealCards() {
         </div>
       </article>
 
-      <div className="grid gap-4 sm:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
+      <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
         {calorieTemplates.map((template) => (
-          <article key={template.id} className="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft">
+          <article key={template.id} className="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft transition hover:border-slate-300">
             <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
               <div>
                 <h3 className="text-base font-semibold text-slate-900">{template.title}</h3>
@@ -78,13 +78,13 @@ export function MealCards() {
               <button
                 type="button"
                 onClick={() => copyTemplate(template)}
-                className="w-full shrink-0 rounded-lg border border-slate-300 px-3 py-1.5 text-xs font-medium text-slate-700 transition hover:bg-slate-100 sm:w-auto"
+                className="w-full shrink-0 rounded-lg border border-slate-300 px-3 py-1.5 text-xs font-medium text-slate-700 transition hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clinical-600 focus-visible:ring-offset-2 sm:w-auto"
               >
                 {copiedId === template.id ? 'Copied' : 'Copy template'}
               </button>
             </div>
 
-            <p className="mt-3 text-sm font-medium text-slate-800">
+            <p className="mt-3 rounded-lg bg-slate-50 px-3 py-2 text-sm font-medium text-slate-800">
               Macro split: {template.macroSplit.carbsPercent}% carbohydrate / {template.macroSplit.proteinPercent}% protein /{' '}
               {template.macroSplit.fatPercent}% fat
             </p>
@@ -110,7 +110,7 @@ export function MealCards() {
 
             <div className="mt-4">
               <h4 className="text-sm font-semibold text-slate-900">Meal structure</h4>
-              <ul className="mt-1 space-y-1 text-sm text-slate-700">
+              <ul className="mt-2 space-y-1 text-sm text-slate-700">
                 {template.mealStructure.map((meal) => (
                   <li key={`${template.id}-${meal}`}>• {meal}</li>
                 ))}
@@ -119,7 +119,7 @@ export function MealCards() {
 
             <div className="mt-4">
               <h4 className="text-sm font-semibold text-slate-900">Example day</h4>
-              <ul className="mt-1 space-y-1.5 text-sm leading-6 text-slate-700">
+              <ul className="mt-2 space-y-1.5 text-sm leading-6 text-slate-700">
                 <li>
                   <span className="font-medium text-slate-800">Breakfast:</span> {template.meals.breakfast}
                 </li>
@@ -145,7 +145,7 @@ export function MealCards() {
               </ul>
             </div>
 
-            <p className="mt-4 text-sm leading-6 text-slate-700">{template.practicalNote}</p>
+            <p className="mt-4 rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-sm leading-6 text-slate-700">{template.practicalNote}</p>
             <p className="mt-3 border-t border-slate-200 pt-3 text-xs leading-5 text-slate-600">{template.footerNote}</p>
           </article>
         ))}
