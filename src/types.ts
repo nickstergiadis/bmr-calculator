@@ -1,5 +1,3 @@
-import type { CalorieTemplate } from './types/content';
-
 export type ActivityLevel = 'sedentary' | 'low_active' | 'active' | 'very_active';
 
 export type Sex = 'female' | 'male';
@@ -25,7 +23,6 @@ export interface MacroTemplateContent {
   smallNote: string;
   featuredExplainerHeading: string;
   featuredExplainerBody: string[];
-  templates: CalorieTemplate[];
   comparisonBlock: {
     heading: string;
     body: string;

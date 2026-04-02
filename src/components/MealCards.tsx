@@ -1,20 +1,35 @@
 import { useState } from 'react';
+import { calorieTemplates } from '../data/calorieTemplates';
 import { macroTemplateContent } from '../data/content';
 import type { CalorieTemplate } from '../types/content';
 
 function buildTemplateCopy(template: CalorieTemplate) {
   const mealStructure = template.mealStructure.map((meal) => `- ${meal}`).join('\n');
-  const exampleDay = template.exampleDay.map((entry) => `- ${entry.label}: ${entry.text}`).join('\n');
+  const macroSplit = `${template.macroSplit.carbsPercent}% carbohydrate / ${template.macroSplit.proteinPercent}% protein / ${template.macroSplit.fatPercent}% fat`;
+
+  const mealEntries: Array<[string, string | undefined]> = [
+    ['Breakfast', template.meals.breakfast],
+    ['Lunch', template.meals.lunch],
+    ['Dinner', template.meals.dinner],
+    ['Snack 1', template.meals.snack1],
+    ['Optional snack 2', template.meals.snack2],
+    ['Optional snack 3', template.meals.snack3]
+  ];
+
+  const exampleDay = mealEntries
+    .filter(([, text]) => Boolean(text))
+    .map(([label, text]) => `- ${label}: ${text}`)
+    .join('\n');
 
   return [
     `${template.title}`,
     `${template.shortLabel}`,
     '',
-    `Macro split: ${template.macroSplit}`,
+    `Macro split: ${macroSplit}`,
     'Approximate macros:',
-    `- Protein: ${template.proteinG} g`,
-    `- Carbohydrate: ${template.carbsG} g`,
-    `- Fat: ${template.fatsG} g`,
+    `- Protein: ${template.macros.proteinGrams} g`,
+    `- Carbohydrate: ${template.macros.carbsGrams} g`,
+    `- Fat: ${template.macros.fatGrams} g`,
     '',
     'Meal structure:',
     mealStructure,
@@ -31,12 +46,12 @@ function buildTemplateCopy(template: CalorieTemplate) {
 }
 
 export function MealCards() {
-  const [copiedTitle, setCopiedTitle] = useState<string | null>(null);
+  const [copiedId, setCopiedId] = useState<string | null>(null);
 
   const copyTemplate = async (template: CalorieTemplate) => {
     await navigator.clipboard.writeText(buildTemplateCopy(template));
-    setCopiedTitle(template.title);
-    window.setTimeout(() => setCopiedTitle(null), 2000);
+    setCopiedId(template.id);
+    window.setTimeout(() => setCopiedId(null), 2000);
   };
 
   return (
@@ -53,9 +68,9 @@ export function MealCards() {
       </article>
 
       <div className="grid gap-4 sm:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
-        {macroTemplateContent.templates.map((template) => (
-          <article key={template.title} className="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft">
-            <div className="flex items-start justify-between gap-3">
+        {calorieTemplates.map((template) => (
+          <article key={template.id} className="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft">
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
               <div>
                 <h3 className="text-base font-semibold text-slate-900">{template.title}</h3>
                 <p className="mt-1 text-xs font-medium uppercase tracking-wide text-slate-600">{template.shortLabel}</p>
@@ -63,13 +78,16 @@ export function MealCards() {
               <button
                 type="button"
                 onClick={() => copyTemplate(template)}
-                className="shrink-0 rounded-lg border border-slate-300 px-3 py-1.5 text-xs font-medium text-slate-700 transition hover:bg-slate-100"
+                className="w-full shrink-0 rounded-lg border border-slate-300 px-3 py-1.5 text-xs font-medium text-slate-700 transition hover:bg-slate-100 sm:w-auto"
               >
-                {copiedTitle === template.title ? 'Copied' : 'Copy template'}
+                {copiedId === template.id ? 'Copied' : 'Copy template'}
               </button>
             </div>
 
-            <p className="mt-3 text-sm font-medium text-slate-800">Macro split: {template.macroSplit}</p>
+            <p className="mt-3 text-sm font-medium text-slate-800">
+              Macro split: {template.macroSplit.carbsPercent}% carbohydrate / {template.macroSplit.proteinPercent}% protein /{' '}
+              {template.macroSplit.fatPercent}% fat
+            </p>
 
             <dl className="mt-3 space-y-1 text-sm text-slate-700">
               <div className="flex justify-between gap-3">
@@ -78,15 +96,15 @@ export function MealCards() {
               </div>
               <div className="flex justify-between gap-3">
                 <dt>Protein</dt>
-                <dd>{template.proteinG} g</dd>
+                <dd>{template.macros.proteinGrams} g</dd>
               </div>
               <div className="flex justify-between gap-3">
                 <dt>Carbohydrate</dt>
-                <dd>{template.carbsG} g</dd>
+                <dd>{template.macros.carbsGrams} g</dd>
               </div>
               <div className="flex justify-between gap-3">
                 <dt>Fat</dt>
-                <dd>{template.fatsG} g</dd>
+                <dd>{template.macros.fatGrams} g</dd>
               </div>
             </dl>
 
@@ -94,7 +112,7 @@ export function MealCards() {
               <h4 className="text-sm font-semibold text-slate-900">Meal structure</h4>
               <ul className="mt-1 space-y-1 text-sm text-slate-700">
                 {template.mealStructure.map((meal) => (
-                  <li key={meal}>• {meal}</li>
+                  <li key={`${template.id}-${meal}`}>• {meal}</li>
                 ))}
               </ul>
             </div>
@@ -102,11 +120,28 @@ export function MealCards() {
             <div className="mt-4">
               <h4 className="text-sm font-semibold text-slate-900">Example day</h4>
               <ul className="mt-1 space-y-1.5 text-sm leading-6 text-slate-700">
-                {template.exampleDay.map((entry) => (
-                  <li key={`${template.title}-${entry.label}`}>
-                    <span className="font-medium text-slate-800">{entry.label}:</span> {entry.text}
+                <li>
+                  <span className="font-medium text-slate-800">Breakfast:</span> {template.meals.breakfast}
+                </li>
+                <li>
+                  <span className="font-medium text-slate-800">Lunch:</span> {template.meals.lunch}
+                </li>
+                <li>
+                  <span className="font-medium text-slate-800">Dinner:</span> {template.meals.dinner}
+                </li>
+                <li>
+                  <span className="font-medium text-slate-800">Snack 1:</span> {template.meals.snack1}
+                </li>
+                {template.meals.snack2 ? (
+                  <li>
+                    <span className="font-medium text-slate-800">Optional snack 2:</span> {template.meals.snack2}
                   </li>
-                ))}
+                ) : null}
+                {template.meals.snack3 ? (
+                  <li>
+                    <span className="font-medium text-slate-800">Optional snack 3:</span> {template.meals.snack3}
+                  </li>
+                ) : null}
               </ul>
             </div>
 

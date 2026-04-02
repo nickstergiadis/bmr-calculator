@@ -1,21 +1,30 @@
-export interface CalorieTemplateMeal {
-  label: string;
-  text: string;
-}
-
-export interface CalorieTemplate {
+export type CalorieTemplate = {
+  id: string;
   title: string;
   shortLabel: string;
   calories: number;
-  macroSplit: string;
-  proteinG: number;
-  carbsG: number;
-  fatsG: number;
+  macroSplit: {
+    carbsPercent: number;
+    proteinPercent: number;
+    fatPercent: number;
+  };
+  macros: {
+    proteinGrams: number;
+    carbsGrams: number;
+    fatGrams: number;
+  };
   mealStructure: string[];
-  exampleDay: CalorieTemplateMeal[];
+  meals: {
+    breakfast: string;
+    lunch: string;
+    dinner: string;
+    snack1: string;
+    snack2?: string;
+    snack3?: string;
+  };
   practicalNote: string;
   footerNote: string;
-}
+};
 
 export interface WeeklyStructure {
   title: string;
