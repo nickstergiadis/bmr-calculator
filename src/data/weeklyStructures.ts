@@ -2,69 +2,87 @@ import type { WeeklyStructure } from '../types/content';
 
 export const weeklyStructures: WeeklyStructure[] = [
   {
+    id: 'beginner-deconditioned-adult',
     title: 'Beginner / deconditioned adult',
+    shortLabel: 'Simple consistency-first starting point',
+    bestFor: 'Best for: Getting started again',
     intro:
-      'A simple starting structure for someone who has been inactive, feels deconditioned, or is returning to exercise after a long break.',
-    focusPoints: [
+      'A simple structure for someone who has been inactive, feels deconditioned, or is returning to exercise after a long break.',
+    goals: [
       'build consistency first',
-      'prioritize walking and basic strength work',
-      'keep sessions manageable',
+      'increase general activity gradually',
+      'reintroduce strength work without doing too much too soon',
       'avoid the all-or-nothing mindset'
     ],
     exampleWeek: [
-      'Monday: 20 to 30 minute walk',
-      'Tuesday: Basic full-body strength session',
-      'Wednesday: Easy walk or mobility work',
-      'Thursday: Rest',
-      'Friday: Basic full-body strength session',
-      'Saturday: 20 to 30 minute walk',
-      'Sunday: Rest or light mobility'
+      { day: 'Monday', activity: '20 to 30 minute walk' },
+      { day: 'Tuesday', activity: 'Basic full-body strength session' },
+      { day: 'Wednesday', activity: 'Easy walk or mobility work' },
+      { day: 'Thursday', activity: 'Rest' },
+      { day: 'Friday', activity: 'Basic full-body strength session' },
+      { day: 'Saturday', activity: '20 to 30 minute walk' },
+      { day: 'Sunday', activity: 'Rest or light mobility' }
     ],
-    wherePhysioFits:
-      'Physio can help choose appropriate exercises, modify painful movements, and make the starting point feel less intimidating and more realistic.'
+    practicalNote:
+      'This type of week is often enough to create momentum without feeling overwhelming. The goal is not to train hard every day. The goal is to rebuild routine, tolerance, and confidence.',
+    physioFit:
+      'Physio can help choose appropriate starting exercises, modify painful movements, and make the plan feel more realistic and less intimidating.'
   },
   {
+    id: 'fat-loss-strength-foundation',
     title: 'Fat loss + strength foundation',
+    shortLabel: 'Balanced weight-management and strength structure',
+    bestFor: 'Best for: Weight loss plus strength habits',
     intro:
       'A balanced structure for someone trying to improve body composition while also getting stronger and more consistent with exercise.',
-    focusPoints: [
+    goals: [
       'combine regular walking or cardio with strength work',
       'avoid relying on diet alone',
-      'build habits that can be sustained most weeks',
-      'consistency matters more than perfect tracking'
+      'build sustainable habits across the week',
+      'support body composition goals without turning the plan into extremes'
     ],
     exampleWeek: [
-      'Monday: Upper-body or full-body strength',
-      'Tuesday: Brisk walk or cardio 30 to 45 minutes',
-      'Wednesday: Lower-body or full-body strength',
-      'Thursday: Walk and light mobility',
-      'Friday: Strength session',
-      'Saturday: Longer walk or cardio',
-      'Sunday: Rest'
+      { day: 'Monday', activity: 'Upper-body or full-body strength' },
+      { day: 'Tuesday', activity: 'Brisk walk or cardio for 30 to 45 minutes' },
+      { day: 'Wednesday', activity: 'Lower-body or full-body strength' },
+      { day: 'Thursday', activity: 'Walk and light mobility' },
+      { day: 'Friday', activity: 'Strength session' },
+      { day: 'Saturday', activity: 'Longer walk, cardio, or general activity day' },
+      { day: 'Sunday', activity: 'Rest' }
     ],
-    wherePhysioFits:
-      'Physio can help if pain, stiffness, old injuries, or poor exercise tolerance are limiting your ability to strength train or increase activity.'
+    practicalNote:
+      'For many adults, this type of week is more realistic than trying to train hard every day. Walking helps increase overall activity, while strength work helps support muscle, function, and long-term progress.',
+    physioFit:
+      'Physio can help if pain, stiffness, old injuries, or low exercise tolerance are limiting your ability to strength train or increase activity consistently.'
   },
   {
+    id: 'return-to-gym-rehab-bridge',
     title: 'Return to gym / rehab bridge',
+    shortLabel: 'Symptom-guided return to training',
+    bestFor: 'Best for: Returning to the gym after pain or injury',
     intro:
       'A bridge for someone who wants to get back to gym training but still needs symptom-guided progression and a more thoughtful loading plan.',
-    focusPoints: [
-      'use progressive loading, not random trial and error',
-      'substitute or modify movements when needed',
-      'expect some adjustment period',
-      'build volume gradually'
+    goals: [
+      'return to training with structure rather than guesswork',
+      'modify exercises when needed instead of stopping altogether',
+      'build load and volume gradually',
+      'manage flare-ups without losing momentum'
     ],
     exampleWeek: [
-      'Monday: Strength session with modified lifts',
-      'Tuesday: Walk or easy cardio',
-      'Wednesday: Mobility and recovery work',
-      'Thursday: Strength session with gradual progression',
-      'Friday: Walk or easy cardio',
-      'Saturday: Optional lighter accessory or technique session',
-      'Sunday: Rest'
+      { day: 'Monday', activity: 'Strength session with modified lifts' },
+      { day: 'Tuesday', activity: 'Walk or easy cardio' },
+      { day: 'Wednesday', activity: 'Mobility and recovery work' },
+      { day: 'Thursday', activity: 'Strength session with gradual progression' },
+      { day: 'Friday', activity: 'Walk or easy cardio' },
+      {
+        day: 'Saturday',
+        activity: 'Optional lighter accessory, technique, or machine-based session'
+      },
+      { day: 'Sunday', activity: 'Rest' }
     ],
-    wherePhysioFits:
+    practicalNote:
+      'This type of week works well for someone who is no longer in the very early stage of rehab but is not yet ready to train normally without adjustments. The plan should feel progressive, but still controlled.',
+    physioFit:
       'Physio can help identify what to keep, what to modify, how to progress loading, and how to manage flare-ups without abandoning the plan.'
   }
 ];
