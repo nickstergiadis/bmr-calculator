@@ -14,9 +14,11 @@ import type { CalculatorInput } from './types';
 const initialValues: CalculatorInput = {
   age: 38,
   sex: 'female',
-  heightCm: 168,
-  weightKg: 79,
-  activity: 'light'
+  unit: 'metric',
+  height: 168,
+  weight: 79,
+  activity: 'low_active',
+  goal: 'maintain'
 };
 
 export default function App() {
@@ -31,7 +33,7 @@ export default function App() {
         <Section
           id="calculator"
           title="Calculator"
-          subtitle="Use this estimate to support clinician-led discussions around energy intake, protein, and realistic progress pacing."
+          subtitle="Estimate resting and daily calories with practical, plain-language guidance. Treat this as a starting point, not a prescription."
         >
           <div className="grid gap-4 lg:grid-cols-2">
             <CalculatorCard values={values} onChange={setValues} />

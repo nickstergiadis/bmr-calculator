@@ -1,13 +1,19 @@
-export type ActivityLevel = 'sedentary' | 'light' | 'moderate' | 'active';
+export type ActivityLevel = 'sedentary' | 'low_active' | 'active' | 'very_active';
 
 export type Sex = 'female' | 'male';
+
+export type UnitSystem = 'metric' | 'imperial';
+
+export type Goal = 'maintain' | 'mild_fat_loss' | 'gain_build';
 
 export interface CalculatorInput {
   age: number;
   sex: Sex;
-  heightCm: number;
-  weightKg: number;
+  height: number;
+  weight: number;
+  unit: UnitSystem;
   activity: ActivityLevel;
+  goal: Goal;
 }
 
 export interface MacroTemplate {
