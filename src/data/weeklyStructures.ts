@@ -1,5 +1,15 @@
 import type { WeeklyStructure } from '../types/content';
 
+const beginnerWeek: WeeklyStructure['exampleWeek'] = [
+  { day: 'Monday', activity: '20 to 30 minute walk' },
+  { day: 'Tuesday', activity: 'Basic full-body strength session' },
+  { day: 'Wednesday', activity: 'Easy walk or mobility work' },
+  { day: 'Thursday', activity: 'Rest' },
+  { day: 'Friday', activity: 'Basic full-body strength session' },
+  { day: 'Saturday', activity: '20 to 30 minute walk' },
+  { day: 'Sunday', activity: 'Rest or light mobility' }
+];
+
 export const weeklyStructures: WeeklyStructure[] = [
   {
     id: 'beginner-deconditioned-adult',
@@ -14,15 +24,7 @@ export const weeklyStructures: WeeklyStructure[] = [
       'reintroduce strength work without doing too much too soon',
       'avoid the all-or-nothing mindset'
     ],
-    exampleWeek: [
-      { day: 'Monday', activity: '20 to 30 minute walk' },
-      { day: 'Tuesday', activity: 'Basic full-body strength session' },
-      { day: 'Wednesday', activity: 'Easy walk or mobility work' },
-      { day: 'Thursday', activity: 'Rest' },
-      { day: 'Friday', activity: 'Basic full-body strength session' },
-      { day: 'Saturday', activity: '20 to 30 minute walk' },
-      { day: 'Sunday', activity: 'Rest or light mobility' }
-    ],
+    exampleWeek: beginnerWeek,
     practicalNote:
       'This type of week is often enough to create momentum without feeling overwhelming. The goal is not to train hard every day. The goal is to rebuild routine, tolerance, and confidence.',
     physioFit:

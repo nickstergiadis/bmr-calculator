@@ -26,7 +26,7 @@ export function WeeklyPlanCards() {
                 <h4 className="text-sm font-semibold text-slate-900">Main goals</h4>
                 <ul className="mt-2 space-y-1 text-sm leading-6 text-slate-700">
                   {plan.goals.map((goal) => (
-                    <li key={goal}>• {goal}</li>
+                    <li key={`${plan.id}-${goal}`}>• {goal}</li>
                   ))}
                 </ul>
               </section>

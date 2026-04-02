@@ -15,7 +15,8 @@ export const macroTemplateContent: MacroTemplateContent = {
   ],
   comparisonBlock: {
     heading: 'Same structure, different portions',
-    body: 'Many calorie targets look similar on paper. The biggest difference is often portion size, snack frequency, and how much carbohydrate or fat is included across the day. In other words, a 2,400 calorie day does not need a completely different style of eating than a 1,600 calorie day. It may simply mean larger portions and one extra snack.'
+    body:
+      'Many calorie targets look similar on paper. The biggest difference is often portion size, snack frequency, and how much carbohydrate or fat is included across the day. In other words, a 2,400 calorie day does not need a completely different style of eating than a 1,600 calorie day. It may simply mean larger portions and one extra snack.'
   },
   practicalTakeaways: {
     heading: 'What to notice from these examples',

@@ -3,7 +3,7 @@ import { calorieTemplates } from '../data/calorieTemplates';
 import { macroTemplateContent } from '../data/content';
 import type { CalorieTemplate } from '../types/content';
 
-function buildTemplateCopy(template: CalorieTemplate) {
+function buildTemplateCopy(template: CalorieTemplate): string {
   const mealStructure = template.mealStructure.map((meal) => `- ${meal}`).join('\n');
   const macroSplit = `${template.macroSplit.carbsPercent}% carbohydrate / ${template.macroSplit.proteinPercent}% protein / ${template.macroSplit.fatPercent}% fat`;
 
@@ -88,7 +88,9 @@ export function MealCards() {
               </div>
               <button
                 type="button"
-                onClick={() => copyTemplate(template)}
+                onClick={() => {
+                  void copyTemplate(template);
+                }}
                 className="w-full shrink-0 rounded-lg border border-slate-300 px-3 py-1.5 text-xs font-medium text-slate-700 transition hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clinical-600 focus-visible:ring-offset-2 sm:w-auto"
               >
                 {copiedId === template.id ? 'Copied' : 'Copy template'}
