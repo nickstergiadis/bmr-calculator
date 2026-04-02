@@ -1,19 +1,35 @@
 const faqItems = [
   {
-    q: 'Is this calculator a diagnosis or treatment plan?',
-    a: 'No. It is educational and should not replace individualized clinical assessment.'
+    q: 'Is this number exact?',
+    a: 'No. It is an estimate based on your inputs. Real-life calorie needs vary based on activity, body composition, routine, and individual differences. Use it as a starting point, then adjust based on trends.'
   },
   {
-    q: 'Can I use this for rapid fat loss?',
-    a: 'This tool is designed around gradual, sustainable behavior change and rehab-compatible planning.'
+    q: 'Is this the same as TDEE?',
+    a: 'Not exactly. This tool starts with an estimate of resting calories, then uses activity information to estimate maintenance calories. That maintenance estimate is similar to what many people mean when they say total daily energy expenditure.'
   },
   {
-    q: 'Should I follow these numbers exactly?',
-    a: 'Treat them as initial estimates. Your physiotherapist or dietitian can help adjust based on symptoms and progress.'
+    q: 'What if my weight is not changing?',
+    a: 'That usually means your actual intake and output are not matching the estimate as expected. Before making major changes, look at a few weeks of trends, not a few days. Body weight, hunger, energy, recovery, and consistency all matter.'
   },
   {
-    q: 'Does higher protein fix pain or injuries?',
-    a: 'Protein can support tissue goals, but rehab outcomes depend on many factors including loading, sleep, and adherence.'
+    q: 'Do I need to track macros?',
+    a: 'Not always. Some people find macro tracking helpful. Others do well by focusing on overall calories, regular meals, enough protein, and a repeatable routine. Tracking is a tool, not a requirement.'
+  },
+  {
+    q: 'Why include protein?',
+    a: 'Protein is often useful to consider when someone is trying to build strength, maintain muscle while losing weight, or support regular resistance training. It is one part of the overall picture, not the only thing that matters.'
+  },
+  {
+    q: 'When should I see a physio?',
+    a: 'A physio may help if pain, stiffness, low confidence, or repeated flare-ups are making it hard to exercise, return to the gym, or build consistency.'
+  },
+  {
+    q: 'When should I see a dietitian?',
+    a: 'A registered dietitian is the right professional for individualized nutrition planning, especially if you have digestive concerns, medical conditions, a history of disordered eating, pregnancy, or more complex weight-related goals.'
+  },
+  {
+    q: 'Who is this tool for?',
+    a: 'This tool is intended for adults who want a simple educational starting point for calorie needs, meal structure, and exercise planning.'
   }
 ];
 

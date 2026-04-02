@@ -2,10 +2,12 @@ const navItems = [
   ['hero', 'Home'],
   ['calculator', 'Calculator'],
   ['rehab', 'Rehab context'],
+  ['physio-role', 'Physio'],
   ['templates', 'Templates'],
   ['weekly-plans', 'Exercise structure'],
-  ['physio-role', 'Physio role'],
+  ['movement-baseline', 'Baseline'],
   ['faq', 'FAQ'],
+  ['cta', 'Support'],
   ['disclaimer', 'Disclaimer']
 ];
 

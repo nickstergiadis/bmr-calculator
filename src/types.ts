@@ -22,11 +22,12 @@ export interface MacroTemplate {
   proteinG: number;
   carbsG: number;
   fatsG: number;
-  context: string;
 }
 
 export interface WeeklyPlan {
   title: string;
-  focus: string;
-  sessions: string[];
+  intro: string;
+  focusPoints: string[];
+  exampleWeek: string[];
+  wherePhysioFits: string;
 }

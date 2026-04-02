@@ -1,24 +1,43 @@
 export function Hero() {
   return (
     <section id="hero" className="border-b border-slate-200 bg-gradient-to-b from-clinical-50 to-slate-50 py-16">
-      <div className="mx-auto grid max-w-6xl gap-8 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
-        <div className="space-y-5">
-          <p className="text-sm font-semibold uppercase tracking-[0.14em] text-clinical-700">Educational tool</p>
-          <h1 className="text-4xl font-semibold tracking-tight text-slate-900 md:text-5xl">
-            Understand your baseline energy needs for recovery-focused planning.
-          </h1>
-          <p className="max-w-xl text-base leading-7 text-slate-600">
-            This BMR calculator gives a starting estimate for calories and protein so adults can better discuss
-            nutrition and exercise structure with their physiotherapist or healthcare team.
-          </p>
-        </div>
-        <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-soft">
-          <h2 className="text-lg font-semibold text-slate-900">Who this is for</h2>
-          <ul className="mt-4 space-y-3 text-sm leading-6 text-slate-600">
-            <li>• Adults aiming for gradual body composition change without extreme dieting.</li>
-            <li>• Deconditioned patients reintroducing movement after inactivity or pain setbacks.</li>
-            <li>• Rehab patients wanting clearer context for calories, protein, and weekly exercise structure.</li>
-          </ul>
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
+          <div className="space-y-5">
+            <h1 className="text-4xl font-semibold tracking-tight text-slate-900 md:text-5xl">
+              Estimate your calorie needs and see how diet, exercise, and physio fit together
+            </h1>
+            <p className="max-w-3xl text-base leading-7 text-slate-600">
+              This tool gives adults a practical starting point for estimated resting and maintenance calories, with
+              simple examples of meals, macros, and weekly exercise structure. It is designed to help connect the
+              numbers to real life, especially if you are trying to lose weight, build strength, or return to exercise
+              after pain or injury.
+            </p>
+            <p className="text-sm font-medium text-slate-700">
+              Educational tool only. Not individualized medical or nutrition advice.
+            </p>
+            <div className="flex flex-wrap gap-3">
+              <a
+                href="#calculator"
+                className="rounded-xl bg-clinical-700 px-5 py-3 text-sm font-semibold text-white transition hover:bg-clinical-800"
+              >
+                Calculate now
+              </a>
+              <a
+                href="#templates"
+                className="rounded-xl border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-700 transition hover:border-clinical-700 hover:text-clinical-700"
+              >
+                See example plans
+              </a>
+            </div>
+          </div>
+          <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-soft">
+            <h2 className="text-lg font-semibold text-slate-900">Adults only</h2>
+            <p className="mt-3 text-sm leading-6 text-slate-600">
+              Use this estimate as a practical guide, then adjust based on trends, tolerance, and qualified professional
+              advice when needed.
+            </p>
+          </div>
         </div>
       </div>
     </section>
