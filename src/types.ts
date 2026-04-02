@@ -1,3 +1,5 @@
+import type { CalorieTemplate } from './types/content';
+
 export type ActivityLevel = 'sedentary' | 'low_active' | 'active' | 'very_active';
 
 export type Sex = 'female' | 'male';
@@ -16,25 +18,6 @@ export interface CalculatorInput {
   goal: Goal;
 }
 
-export interface MacroExampleMeal {
-  label: string;
-  text: string;
-}
-
-export interface MacroTemplate {
-  title: string;
-  shortLabel: string;
-  calories: number;
-  macroSplit: string;
-  proteinG: number;
-  carbsG: number;
-  fatsG: number;
-  mealStructure: string[];
-  exampleDay: MacroExampleMeal[];
-  practicalNote: string;
-  footerNote: string;
-}
-
 export interface MacroTemplateContent {
   heading: string;
   introBody: string;
@@ -42,7 +25,7 @@ export interface MacroTemplateContent {
   smallNote: string;
   featuredExplainerHeading: string;
   featuredExplainerBody: string[];
-  templates: MacroTemplate[];
+  templates: CalorieTemplate[];
   comparisonBlock: {
     heading: string;
     body: string;
@@ -51,12 +34,4 @@ export interface MacroTemplateContent {
     heading: string;
     items: string[];
   };
-}
-
-export interface WeeklyPlan {
-  title: string;
-  intro: string;
-  focusPoints: string[];
-  exampleWeek: string[];
-  wherePhysioFits: string;
 }
