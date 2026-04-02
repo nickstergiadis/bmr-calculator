@@ -1,5 +1,8 @@
 import type { CalorieTemplate } from '../types/content';
 
+const sharedFooterNote =
+  'This is an example structure only. Food choices, portions, and macro distribution can vary widely while still fitting the same daily calorie target.';
+
 export const calorieTemplates: CalorieTemplate[] = [
   {
     id: '1600-kcal-example-day',
@@ -26,8 +29,7 @@ export const calorieTemplates: CalorieTemplate[] = [
     },
     practicalNote:
       'This type of intake may suit a smaller adult, someone in a mild calorie deficit, or someone who simply does better with a lighter overall intake. The goal is still to keep meals balanced and protein reasonably consistent across the day.',
-    footerNote:
-      'This is an example structure only. Food choices, portions, and macro distribution can vary widely while still fitting the same daily calorie target.'
+    footerNote: sharedFooterNote
   },
   {
     id: '2000-kcal-example-day',
@@ -54,8 +56,7 @@ export const calorieTemplates: CalorieTemplate[] = [
     },
     practicalNote:
       'For many adults, this is a useful example of what a moderate, balanced day can look like. It usually means regular meals, enough food to support daily activity, and enough protein to make the day feel relevant to strength and exercise goals.',
-    footerNote:
-      'This is an example structure only. Food choices, portions, and macro distribution can vary widely while still fitting the same daily calorie target.'
+    footerNote: sharedFooterNote
   },
   {
     id: '2400-kcal-example-day',
@@ -83,7 +84,6 @@ export const calorieTemplates: CalorieTemplate[] = [
     },
     practicalNote:
       'This may be a more appropriate example for a larger adult, a more active person, or someone trying to support gym training, performance, or a gradual increase in intake. Higher calories do not have to mean junk food. They often just mean larger portions and one or two extra eating opportunities.',
-    footerNote:
-      'This is an example structure only. Food choices, portions, and macro distribution can vary widely while still fitting the same daily calorie target.'
+    footerNote: sharedFooterNote
   }
 ];
