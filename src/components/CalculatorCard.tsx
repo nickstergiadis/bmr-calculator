@@ -42,7 +42,7 @@ function NumberField({
         max={max}
         value={value}
         onChange={(event) => onValue(Number(event.target.value))}
-        className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-slate-900 outline-none ring-clinical-500 transition focus:ring-2"
+        className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-slate-900 outline-none ring-clinical-500 transition focus:ring-2 focus:ring-offset-1"
       />
     </label>
   );
@@ -62,15 +62,15 @@ export function CalculatorCard({ values, onChange }: CalculatorCardProps) {
       </p>
 
       <div className="mt-6 grid gap-4 sm:grid-cols-2">
-        <div className="sm:col-span-2">
-          <span className="mb-2 block text-sm font-medium text-slate-700">Sex</span>
+        <fieldset className="sm:col-span-2">
+          <legend className="mb-2 block text-sm font-medium text-slate-700">Sex</legend>
           <div className="grid grid-cols-2 gap-2">
             {(['female', 'male'] as Sex[]).map((sex) => (
               <button
                 key={sex}
                 type="button"
                 onClick={() => setSex(sex)}
-                className={`rounded-lg border px-3 py-2 text-sm font-medium capitalize transition ${
+                className={`rounded-lg border px-3 py-2 text-sm font-medium capitalize transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clinical-600 focus-visible:ring-offset-1 ${
                   values.sex === sex
                     ? 'border-clinical-600 bg-clinical-50 text-clinical-800'
                     : 'border-slate-300 text-slate-700 hover:border-clinical-300'
@@ -80,17 +80,17 @@ export function CalculatorCard({ values, onChange }: CalculatorCardProps) {
               </button>
             ))}
           </div>
-        </div>
+        </fieldset>
 
-        <div className="sm:col-span-2">
-          <span className="mb-2 block text-sm font-medium text-slate-700">Units</span>
+        <fieldset className="sm:col-span-2">
+          <legend className="mb-2 block text-sm font-medium text-slate-700">Units</legend>
           <div className="grid grid-cols-2 gap-2">
             {(['metric', 'imperial'] as UnitSystem[]).map((unit) => (
               <button
                 key={unit}
                 type="button"
                 onClick={() => setUnit(unit)}
-                className={`rounded-lg border px-3 py-2 text-sm font-medium capitalize transition ${
+                className={`rounded-lg border px-3 py-2 text-sm font-medium capitalize transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clinical-600 focus-visible:ring-offset-1 ${
                   values.unit === unit
                     ? 'border-clinical-600 bg-clinical-50 text-clinical-800'
                     : 'border-slate-300 text-slate-700 hover:border-clinical-300'
@@ -100,7 +100,7 @@ export function CalculatorCard({ values, onChange }: CalculatorCardProps) {
               </button>
             ))}
           </div>
-        </div>
+        </fieldset>
 
         <NumberField label="Age (years)" value={values.age} min={0} max={120} onValue={(age) => onChange({ ...values, age })} />
         <NumberField
@@ -123,7 +123,7 @@ export function CalculatorCard({ values, onChange }: CalculatorCardProps) {
           <select
             value={values.activity}
             onChange={(event) => onChange({ ...values, activity: event.target.value as ActivityLevel })}
-            className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-slate-900 outline-none ring-clinical-500 transition focus:ring-2"
+            className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-slate-900 outline-none ring-clinical-500 transition focus:ring-2 focus:ring-offset-1"
           >
             {activityOptions.map((option) => (
               <option key={option.value} value={option.value}>
@@ -139,7 +139,7 @@ export function CalculatorCard({ values, onChange }: CalculatorCardProps) {
           <select
             value={values.goal}
             onChange={(event) => onChange({ ...values, goal: event.target.value as Goal })}
-            className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-slate-900 outline-none ring-clinical-500 transition focus:ring-2"
+            className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-slate-900 outline-none ring-clinical-500 transition focus:ring-2 focus:ring-offset-1"
           >
             {goalOptions.map((option) => (
               <option key={option.value} value={option.value}>

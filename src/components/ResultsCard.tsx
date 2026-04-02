@@ -40,7 +40,7 @@ export function ResultsCard({ values }: { values: CalculatorInput }) {
           type="button"
           disabled={!result}
           onClick={copyResults}
-          className="rounded-lg border border-slate-300 px-3 py-2 text-xs font-medium text-slate-700 transition hover:border-clinical-300 disabled:cursor-not-allowed disabled:opacity-50"
+          className="rounded-lg border border-slate-300 px-3 py-2 text-xs font-medium text-slate-700 transition hover:border-clinical-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clinical-600 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
         >
           {copied ? 'Copied' : 'Copy results'}
         </button>
@@ -60,12 +60,12 @@ export function ResultsCard({ values }: { values: CalculatorInput }) {
 
       {result ? (
         <>
-          <dl className="mt-6 grid gap-4 sm:grid-cols-2">
-            <div className="rounded-xl bg-clinical-50 p-4">
+          <dl className="mt-6 grid gap-3 sm:grid-cols-2">
+            <div className="rounded-xl border border-clinical-200 bg-clinical-50 p-4">
               <dt className="text-xs font-semibold uppercase tracking-wide text-clinical-700">Estimated resting calories</dt>
               <dd className="mt-1 text-2xl font-semibold text-clinical-900">{result.restingCalories} kcal/day</dd>
             </div>
-            <div className="rounded-xl bg-slate-100 p-4">
+            <div className="rounded-xl border border-slate-200 bg-slate-100 p-4">
               <dt className="text-xs font-semibold uppercase tracking-wide text-slate-600">Estimated maintenance calories</dt>
               <dd className="mt-1 text-2xl font-semibold text-slate-900">{result.maintenanceCalories} kcal/day</dd>
             </div>
