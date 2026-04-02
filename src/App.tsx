@@ -87,7 +87,12 @@ export default function App() {
           title="Example weekly exercise structures"
           subtitle="These are general examples to show how calories, movement, and exercise structure often fit together in real life. They are not diagnosis-specific rehab plans. They are starting frameworks for adults trying to become more active, lose weight, build strength, or return to exercise more confidently."
         >
-          <WeeklyPlanCards />
+          <div className="space-y-4">
+            <p className="text-sm font-medium text-slate-700">
+              The best weekly plan is usually the one you can repeat consistently, recover from, and adjust over time.
+            </p>
+            <WeeklyPlanCards />
+          </div>
         </Section>
 
         <Section id="movement-baseline" title="A useful baseline for most adults">
@@ -100,6 +105,27 @@ export default function App() {
             <p className="mt-3 text-sm leading-6 text-slate-700">
               If that feels far from your current reality, start smaller. A plan you can repeat is more valuable than
               an ambitious plan you cannot maintain.
+            </p>
+          </div>
+        </Section>
+
+        <Section id="weekly-plan-use" title="How to use these examples">
+          <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-soft">
+            <ul className="space-y-2 text-sm leading-6 text-slate-700">
+              <li>• choose the structure that feels closest to your current starting point</li>
+              <li>• keep the plan simple enough that you can repeat it most weeks</li>
+              <li>• progress by adding time, load, or volume gradually</li>
+              <li>• adjust the plan when symptoms, fatigue, or schedule require it</li>
+            </ul>
+          </div>
+        </Section>
+
+        <Section id="what-physio-adds" title="What physio adds">
+          <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-soft">
+            <p className="text-sm leading-6 text-slate-700">
+              A weekly structure can look good on paper but still fail in practice if exercises are too painful, the
+              loading is wrong, or progression is unclear. Physiotherapy helps close that gap by matching the plan to
+              your current ability and making it easier to progress with confidence.
             </p>
           </div>
         </Section>

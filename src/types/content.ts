@@ -26,10 +26,17 @@ export type CalorieTemplate = {
   footerNote: string;
 };
 
-export interface WeeklyStructure {
+export type WeeklyStructure = {
+  id: string;
   title: string;
+  shortLabel: string;
+  bestFor?: string;
   intro: string;
-  focusPoints: string[];
-  exampleWeek: string[];
-  wherePhysioFits: string;
-}
+  goals: string[];
+  exampleWeek: {
+    day: string;
+    activity: string;
+  }[];
+  practicalNote: string;
+  physioFit: string;
+};
