@@ -1,4 +1,3 @@
-import { calorieTemplates } from './calorieTemplates';
 import type { MacroTemplateContent } from '../types';
 
 export const macroTemplateContent: MacroTemplateContent = {
@@ -14,7 +13,6 @@ export const macroTemplateContent: MacroTemplateContent = {
     'A 2,000 calorie day does not need to look restrictive, overly clean, or complicated. In many cases, it can simply mean three balanced meals, one or two snacks, regular protein intake, and portions that broadly match your goal.',
     'The point of these examples is not to tell you exactly what to eat. It is to make the number feel more concrete and easier to picture.'
   ],
-  templates: calorieTemplates,
   comparisonBlock: {
     heading: 'Same structure, different portions',
     body: 'Many calorie targets look similar on paper. The biggest difference is often portion size, snack frequency, and how much carbohydrate or fat is included across the day. In other words, a 2,400 calorie day does not need a completely different style of eating than a 1,600 calorie day. It may simply mean larger portions and one extra snack.'
