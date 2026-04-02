@@ -22,8 +22,8 @@ function buildTemplateCopy(template: CalorieTemplate) {
     .join('\n');
 
   return [
-    `${template.title}`,
-    `${template.shortLabel}`,
+    template.title,
+    template.shortLabel,
     '',
     `Macro split: ${macroSplit}`,
     'Approximate macros:',
@@ -57,6 +57,12 @@ export function MealCards() {
   return (
     <div className="space-y-5">
       <article className="rounded-2xl border border-slate-200 bg-white p-6 shadow-soft">
+        <h3 className="text-base font-semibold text-slate-900">{macroTemplateContent.heading}</h3>
+        <p className="mt-2 text-sm leading-6 text-slate-700">{macroTemplateContent.introBodyExtended}</p>
+        <p className="mt-2 text-sm font-medium text-slate-800">{macroTemplateContent.smallNote}</p>
+      </article>
+
+      <article className="rounded-2xl border border-slate-200 bg-white p-6 shadow-soft">
         <h3 className="text-xl font-semibold tracking-tight text-slate-900">
           {macroTemplateContent.featuredExplainerHeading}
         </h3>
@@ -69,11 +75,16 @@ export function MealCards() {
 
       <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
         {calorieTemplates.map((template) => (
-          <article key={template.id} className="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft transition hover:border-slate-300">
+          <article
+            key={template.id}
+            className="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft transition hover:border-slate-300"
+          >
             <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
               <div>
                 <h3 className="text-base font-semibold text-slate-900">{template.title}</h3>
-                <p className="mt-1 text-xs font-medium uppercase tracking-wide text-slate-600">{template.shortLabel}</p>
+                <p className="mt-1 text-xs font-medium uppercase tracking-wide text-slate-600">
+                  {template.shortLabel}
+                </p>
               </div>
               <button
                 type="button"
@@ -85,8 +96,8 @@ export function MealCards() {
             </div>
 
             <p className="mt-3 rounded-lg bg-slate-50 px-3 py-2 text-sm font-medium text-slate-800">
-              Macro split: {template.macroSplit.carbsPercent}% carbohydrate / {template.macroSplit.proteinPercent}% protein /{' '}
-              {template.macroSplit.fatPercent}% fat
+              Macro split: {template.macroSplit.carbsPercent}% carbohydrate /{' '}
+              {template.macroSplit.proteinPercent}% protein / {template.macroSplit.fatPercent}% fat
             </p>
 
             <dl className="mt-3 space-y-1 text-sm text-slate-700">
@@ -134,30 +145,40 @@ export function MealCards() {
                 </li>
                 {template.meals.snack2 ? (
                   <li>
-                    <span className="font-medium text-slate-800">Optional snack 2:</span> {template.meals.snack2}
+                    <span className="font-medium text-slate-800">Optional snack 2:</span>{' '}
+                    {template.meals.snack2}
                   </li>
                 ) : null}
                 {template.meals.snack3 ? (
                   <li>
-                    <span className="font-medium text-slate-800">Optional snack 3:</span> {template.meals.snack3}
+                    <span className="font-medium text-slate-800">Optional snack 3:</span>{' '}
+                    {template.meals.snack3}
                   </li>
                 ) : null}
               </ul>
             </div>
 
-            <p className="mt-4 rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-sm leading-6 text-slate-700">{template.practicalNote}</p>
-            <p className="mt-3 border-t border-slate-200 pt-3 text-xs leading-5 text-slate-600">{template.footerNote}</p>
+            <p className="mt-4 rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-sm leading-6 text-slate-700">
+              {template.practicalNote}
+            </p>
+            <p className="mt-3 border-t border-slate-200 pt-3 text-xs leading-5 text-slate-600">
+              {template.footerNote}
+            </p>
           </article>
         ))}
       </div>
 
       <article className="rounded-2xl border border-slate-200 bg-white p-6 shadow-soft">
-        <h3 className="text-base font-semibold text-slate-900">{macroTemplateContent.comparisonBlock.heading}</h3>
+        <h3 className="text-base font-semibold text-slate-900">
+          {macroTemplateContent.comparisonBlock.heading}
+        </h3>
         <p className="mt-2 text-sm leading-6 text-slate-700">{macroTemplateContent.comparisonBlock.body}</p>
       </article>
 
       <article className="rounded-2xl border border-slate-200 bg-white p-6 shadow-soft">
-        <h3 className="text-base font-semibold text-slate-900">{macroTemplateContent.practicalTakeaways.heading}</h3>
+        <h3 className="text-base font-semibold text-slate-900">
+          {macroTemplateContent.practicalTakeaways.heading}
+        </h3>
         <ul className="mt-2 space-y-2 text-sm leading-6 text-slate-700">
           {macroTemplateContent.practicalTakeaways.items.map((item) => (
             <li key={item}>• {item}</li>
