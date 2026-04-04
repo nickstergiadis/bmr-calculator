@@ -37,8 +37,8 @@ export function validateInput(input: CalculatorInput): string[] {
   const errors: string[] = [];
   const bounds = getBounds(input.unit);
 
-  if (!Number.isFinite(input.age) || input.age < 19 || input.age > 100) {
-    errors.push('Age must be between 19 and 100 years for this adult tool.');
+  if (!Number.isFinite(input.age) || input.age < 18 || input.age > 100) {
+    errors.push('Age must be between 18 and 100 years for this adult tool.');
   }
 
   if (!Number.isFinite(input.height) || input.height < bounds.height.min || input.height > bounds.height.max) {

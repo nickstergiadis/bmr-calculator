@@ -26,7 +26,7 @@ export default function App() {
   const [values, setValues] = useState<CalculatorInput>(initialValues);
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900">
+    <div id="top" className="min-h-screen bg-slate-50 text-slate-900">
       <Header />
       <main>
         <Hero />
@@ -164,7 +164,7 @@ export default function App() {
                 href="#physio-role"
                 className="rounded-xl bg-clinical-700 px-5 py-3 text-sm font-semibold text-white transition hover:bg-clinical-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clinical-600 focus-visible:ring-offset-2"
               >
-                Book a physio assessment
+                View physio guidance
               </a>
               <p className="text-sm text-slate-700">
                 Ideal for people returning to exercise, building strength, or trying to stay active despite pain or
