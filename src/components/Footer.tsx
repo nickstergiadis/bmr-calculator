@@ -24,6 +24,15 @@ export function Footer() {
             Adults only. Estimates only. Real-life progress should be guided by trends, symptoms, tolerance, and
             professional advice when needed.
           </p>
+          <div className="mt-4 flex flex-wrap items-center justify-between gap-2 border-t border-slate-200 pt-4 text-xs text-slate-500">
+            <p>Educational content only.</p>
+            <a
+              href="#top"
+              className="font-medium text-slate-600 underline decoration-slate-300 underline-offset-2 transition hover:text-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clinical-600 focus-visible:ring-offset-1"
+            >
+              Back to top
+            </a>
+          </div>
         </div>
       </div>
     </footer>

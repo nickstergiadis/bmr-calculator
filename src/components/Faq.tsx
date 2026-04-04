@@ -38,7 +38,7 @@ export function Faq() {
     <div className="grid gap-3 md:grid-cols-2">
       {faqItems.map((item) => (
         <details key={item.q} className="group rounded-xl border border-slate-200 bg-white p-4 shadow-soft">
-          <summary className="flex cursor-pointer list-none items-start justify-between gap-4 text-sm font-semibold text-slate-900 marker:content-none">
+          <summary className="-m-1 flex cursor-pointer list-none items-start justify-between gap-4 rounded-lg p-1 text-sm font-semibold text-slate-900 marker:content-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clinical-600 focus-visible:ring-offset-1">
             {item.q}
             <span className="mt-0.5 text-xs text-slate-500 transition group-open:rotate-45">+</span>
           </summary>

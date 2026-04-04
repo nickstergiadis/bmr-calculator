@@ -1,6 +1,6 @@
 import type { ActivityLevel, CalculatorInput, Goal, Sex, UnitSystem } from '../types';
 import { activityHelp, validateInput } from '../utils/calculator';
-import { formatMeasurementHelp } from '../utils/unitConversion';
+import { formatMeasurementHelp, fromCm, fromKg, toCm, toKg } from '../utils/unitConversion';
 
 interface CalculatorCardProps {
   values: CalculatorInput;
@@ -50,7 +50,19 @@ function NumberField({
 
 export function CalculatorCard({ values, onChange }: CalculatorCardProps) {
   const setSex = (sex: Sex) => onChange({ ...values, sex });
-  const setUnit = (unit: UnitSystem) => onChange({ ...values, unit });
+  const setUnit = (unit: UnitSystem) => {
+    if (unit === values.unit) return;
+
+    const nextHeight = fromCm(toCm(values.height, values.unit), unit);
+    const nextWeight = fromKg(toKg(values.weight, values.unit), unit);
+
+    onChange({
+      ...values,
+      unit,
+      height: Number(nextHeight.toFixed(1)),
+      weight: Number(nextWeight.toFixed(1))
+    });
+  };
   const labels = formatMeasurementHelp(values.unit);
   const errors = validateInput(values);
 
