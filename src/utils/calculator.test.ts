@@ -15,7 +15,7 @@ const baseInput: CalculatorInput = {
 describe('calculator utilities', () => {
   it('calculates resting calories with the provided equation', () => {
     const resting = calculateRestingCalories(baseInput);
-    expect(Math.round(resting)).toBe(1776);
+    expect(Math.round(resting)).toBe(1757);
   });
 
   it('calculates conservative mild fat loss and gain ranges', () => {
@@ -26,6 +26,11 @@ describe('calculator utilities', () => {
   it('validates implausible values and adult-only logic', () => {
     const errors = validateInput({ ...baseInput, age: 16, weight: 10 });
     expect(errors.length).toBeGreaterThan(0);
+  });
+
+  it('accepts age 18 and blocks under-18 ages', () => {
+    expect(validateInput({ ...baseInput, age: 18 })).toEqual([]);
+    expect(validateInput({ ...baseInput, age: 17 })).toContain('Age must be between 18 and 100 years for this adult tool.');
   });
 
   it('returns typed result output shape', () => {

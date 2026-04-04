@@ -5,7 +5,7 @@ import { calculateResult, validateInput } from '../utils/calculator';
 export function ResultsCard({ values }: { values: CalculatorInput }) {
   const [copied, setCopied] = useState(false);
   const errors = validateInput(values);
-  const isAdult = values.age >= 19;
+  const isAdult = values.age >= 18;
 
   const result = useMemo(() => {
     if (!isAdult || errors.length > 0) return null;
