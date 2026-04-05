@@ -10,7 +10,7 @@ export function Header() {
     <header className="sticky top-0 z-20 border-b border-slate-200/70 bg-white/95 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3 sm:px-6 lg:px-8">
         <a href="#hero" className="text-sm font-semibold tracking-wide text-clinical-700">
-          Adult BMR Calculator
+          BMR Calculator
         </a>
 
         <nav className="hidden items-center gap-1 md:flex" aria-label="Page sections">

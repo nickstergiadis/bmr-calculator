@@ -3,7 +3,7 @@ export function Hero() {
     <section id="hero" className="border-b border-slate-200 bg-gradient-to-b from-white to-clinical-50/40 py-12 md:py-14">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl space-y-4">
-          <p className="text-xs font-semibold uppercase tracking-[0.14em] text-clinical-700">Adults 18+ • Educational tool</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.14em] text-clinical-700">Educational tool</p>
           <h1 className="text-3xl font-semibold tracking-tight text-slate-900 md:text-5xl">
             BMR calculator with practical physio context
           </h1>
