@@ -68,10 +68,15 @@ export function CalculatorCard({ values, onChange }: CalculatorCardProps) {
 
   return (
     <article className="rounded-2xl border border-slate-200 bg-white p-6 shadow-soft">
-      <h3 className="text-lg font-semibold text-slate-900">BMR Calculator inputs</h3>
-      <p className="mt-2 text-sm text-slate-600">
-        This estimates resting calories (resting energy needs). It is educational and not a prescription.
-      </p>
+      <div className="flex items-start justify-between gap-3">
+        <div>
+          <h3 className="text-lg font-semibold text-slate-900">Your inputs</h3>
+          <p className="mt-2 text-sm text-slate-600">
+            Enter your details below. Results update automatically as you type.
+          </p>
+        </div>
+        <span className="rounded-full bg-slate-100 px-2.5 py-1 text-xs font-medium text-slate-600">Step 1</span>
+      </div>
 
       <div className="mt-6 grid gap-4 sm:grid-cols-2">
         <fieldset className="sm:col-span-2">

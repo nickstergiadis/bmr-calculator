@@ -32,8 +32,9 @@ export function ResultsCard({ values }: { values: CalculatorInput }) {
       <div className="flex items-start justify-between gap-3">
         <div>
           <h3 className="text-lg font-semibold text-slate-900">Your estimate</h3>
+          <span className="mt-2 inline-block rounded-full bg-slate-100 px-2.5 py-1 text-xs font-medium text-slate-600">Step 2</span>
           <p className="mt-2 text-sm text-slate-600">
-            These numbers are estimates of resting and daily energy needs, not exact requirements.
+            Use this as your starting estimate, then adjust based on weekly trends and tolerance.
           </p>
         </div>
         <button

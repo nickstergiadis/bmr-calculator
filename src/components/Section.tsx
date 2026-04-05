@@ -5,11 +5,12 @@ interface SectionProps extends PropsWithChildren {
   title: string;
   subtitle?: string;
   eyebrow?: string;
+  tone?: 'default' | 'muted';
 }
 
-export function Section({ id, title, subtitle, eyebrow, children }: SectionProps) {
+export function Section({ id, title, subtitle, eyebrow, tone = 'default', children }: SectionProps) {
   return (
-    <section id={id} className="scroll-mt-24 py-12 md:py-16">
+    <section id={id} className={`scroll-mt-24 py-12 md:py-16 ${tone === 'muted' ? 'bg-slate-100/60' : ''}`}>
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="mb-8 max-w-3xl">
           {eyebrow ? (
