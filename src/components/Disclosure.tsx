@@ -49,10 +49,7 @@ export function Disclosure({ title, defaultOpen = false, children, className = '
           className="flex w-full cursor-pointer items-center justify-between gap-3 rounded-xl px-4 py-3 text-left transition hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clinical-600 focus-visible:ring-offset-1"
         >
           <span className="text-sm font-semibold text-slate-900">{title}</span>
-          <span className="flex items-center gap-2">
-            <span className="text-[11px] font-medium uppercase tracking-wide text-slate-500">{isOpen ? 'Expanded' : 'Collapsed'}</span>
-            <ChevronIcon isOpen={isOpen} />
-          </span>
+          <ChevronIcon isOpen={isOpen} />
         </button>
       </h4>
 
