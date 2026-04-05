@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 import { calorieTemplates } from '../data/calorieTemplates';
+import { Disclosure } from './Disclosure';
 import { macroTemplateContent } from '../data/content';
 import type { CalorieTemplate } from '../types/content';
 
@@ -136,18 +137,16 @@ export function MealCards() {
         </div>
 
         <div className="mt-4 space-y-3">
-          <details open className="rounded-xl border border-slate-200 p-4">
-            <summary className="cursor-pointer list-none text-sm font-semibold text-slate-900">Meal structure</summary>
-            <ul className="mt-3 space-y-1 text-sm text-slate-700">
+          <Disclosure title="Meal structure" defaultOpen>
+            <ul className="space-y-1 text-sm text-slate-700">
               {activeTemplate.mealStructure.map((meal) => (
                 <li key={`${activeTemplate.id}-${meal}`}>• {meal}</li>
               ))}
             </ul>
-          </details>
+          </Disclosure>
 
-          <details className="rounded-xl border border-slate-200 p-4">
-            <summary className="cursor-pointer list-none text-sm font-semibold text-slate-900">Example day</summary>
-            <ul className="mt-3 space-y-1.5 text-sm leading-6 text-slate-700">
+          <Disclosure title="Example day">
+            <ul className="space-y-1.5 text-sm leading-6 text-slate-700">
               <li>
                 <span className="font-medium text-slate-800">Breakfast:</span> {activeTemplate.meals.breakfast}
               </li>
@@ -171,7 +170,7 @@ export function MealCards() {
                 </li>
               ) : null}
             </ul>
-          </details>
+          </Disclosure>
         </div>
 
         <p className="mt-4 rounded-xl bg-slate-50 p-3 text-sm text-slate-700">{activeTemplate.practicalNote}</p>

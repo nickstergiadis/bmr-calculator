@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 import { weeklyStructures } from '../data/weeklyStructures';
+import { Disclosure } from './Disclosure';
 
 export function WeeklyPlanCards() {
   const [activeId, setActiveId] = useState(weeklyStructures[0]?.id ?? '');
@@ -52,16 +53,15 @@ export function WeeklyPlanCards() {
           </section>
         </div>
 
-        <details className="mt-4 rounded-xl border border-slate-200 p-4">
-          <summary className="cursor-pointer list-none text-sm font-semibold text-slate-900">View example week</summary>
-          <ul className="mt-3 space-y-1 text-sm leading-6 text-slate-700">
+        <Disclosure title="Example week" className="mt-4">
+          <ul className="space-y-1 text-sm leading-6 text-slate-700">
             {activePlan.exampleWeek.map((session) => (
               <li key={`${activePlan.id}-${session.day}`}>
                 <span className="font-medium text-slate-800">{session.day}:</span> {session.activity}
               </li>
             ))}
           </ul>
-        </details>
+        </Disclosure>
 
         <p className="mt-4 rounded-xl bg-slate-50 p-3 text-sm leading-6 text-slate-700">{activePlan.practicalNote}</p>
       </article>
