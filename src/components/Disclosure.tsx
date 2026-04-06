@@ -57,6 +57,8 @@ export function Disclosure({ title, defaultOpen = false, children, className = '
       </h4>
 
       <div
+        hidden={!isOpen}
+        aria-hidden={!isOpen}
         className={`grid overflow-hidden transition-[grid-template-rows,opacity] duration-200 ease-out ${
           isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-70'
         }`}
