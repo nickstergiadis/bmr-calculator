@@ -8,8 +8,8 @@ This project provides a clean, clinically credible starter app for estimating:
 
 - Basal Metabolic Rate (BMR)
 - Estimated maintenance calories
-- A gentle calorie-deficit example
-- A practical protein intake range
+- A suggested calorie target range based on goal (maintain, mild fat loss, or gain/build)
+- A personalised protein range (1.6–2.2 g/kg bodyweight)
 
 It also includes educational landing-page sections tailored to adults in rehab contexts, including example macro templates, weekly exercise structures, FAQ, and a clear disclaimer.
 

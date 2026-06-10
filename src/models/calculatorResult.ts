@@ -8,4 +8,5 @@ export interface CalculatorResult {
   maintenanceCalories: number;
   targetRange: CalorieRange;
   goalSummary: string;
+  proteinRangeGrams: CalorieRange;
 }

@@ -21,26 +21,33 @@ const goalOptions: { value: Goal; label: string }[] = [
 ];
 
 function NumberField({
+  id,
   label,
   value,
   min,
   max,
+  hasError,
   onValue
 }: {
+  id: string;
   label: string;
   value: number;
   min?: number;
   max?: number;
+  hasError?: boolean;
   onValue: (value: number) => void;
 }) {
   return (
-    <label className="block">
+    <label className="block" htmlFor={id}>
       <span className="mb-2 block text-sm font-medium text-slate-700">{label}</span>
       <input
+        id={id}
         type="number"
         min={min}
         max={max}
         value={value}
+        aria-invalid={hasError ? true : undefined}
+        aria-describedby={hasError ? 'calc-field-errors' : undefined}
         onChange={(event) => onValue(Number(event.target.value))}
         className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-slate-900 outline-none ring-clinical-500 transition focus:ring-2 focus:ring-offset-1"
       />
@@ -65,6 +72,9 @@ export function CalculatorCard({ values, onChange }: CalculatorCardProps) {
   };
   const labels = formatMeasurementHelp(values.unit);
   const errors = validateInput(values);
+  const ageHasError = errors.some((e) => e.includes('Age'));
+  const heightHasError = errors.some((e) => e.includes('Height'));
+  const weightHasError = errors.some((e) => e.includes('Weight'));
 
   return (
     <article className="rounded-2xl border border-slate-200 bg-white p-6 shadow-soft">
@@ -119,19 +129,31 @@ export function CalculatorCard({ values, onChange }: CalculatorCardProps) {
           </div>
         </fieldset>
 
-        <NumberField label="Age (years)" value={values.age} min={0} max={120} onValue={(age) => onChange({ ...values, age })} />
         <NumberField
+          id="field-age"
+          label="Age (years)"
+          value={values.age}
+          min={0}
+          max={120}
+          hasError={ageHasError}
+          onValue={(age) => onChange({ ...values, age })}
+        />
+        <NumberField
+          id="field-height"
           label={labels.heightLabel}
           value={values.height}
           min={values.unit === 'metric' ? 120 : 47}
           max={values.unit === 'metric' ? 230 : 90}
+          hasError={heightHasError}
           onValue={(height) => onChange({ ...values, height })}
         />
         <NumberField
+          id="field-weight"
           label={labels.weightLabel}
           value={values.weight}
           min={values.unit === 'metric' ? 35 : 77}
           max={values.unit === 'metric' ? 300 : 660}
+          hasError={weightHasError}
           onValue={(weight) => onChange({ ...values, weight })}
         />
 
@@ -168,7 +190,12 @@ export function CalculatorCard({ values, onChange }: CalculatorCardProps) {
       </div>
 
       {errors.length > 0 ? (
-        <ul className="mt-4 space-y-1 rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm text-amber-800">
+        <ul
+          id="calc-field-errors"
+          role="alert"
+          aria-live="polite"
+          className="mt-4 space-y-1 rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm text-amber-800"
+        >
           {errors.map((error) => (
             <li key={error}>• {error}</li>
           ))}

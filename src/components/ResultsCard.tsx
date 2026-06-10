@@ -4,6 +4,7 @@ import { calculateResult, validateInput } from '../utils/calculator';
 
 export function ResultsCard({ values }: { values: CalculatorInput }) {
   const [copied, setCopied] = useState(false);
+  const [copyFailed, setCopyFailed] = useState(false);
   const errors = validateInput(values);
   const isAdult = values.age >= 18;
 
@@ -19,12 +20,19 @@ export function ResultsCard({ values }: { values: CalculatorInput }) {
       `Estimated resting calories: ${result.restingCalories} kcal/day`,
       `Estimated maintenance calories: ${result.maintenanceCalories} kcal/day`,
       `Suggested target range: ${result.targetRange.min}-${result.targetRange.max} kcal/day`,
+      `Protein range: ${result.proteinRangeGrams.min}-${result.proteinRangeGrams.max} g/day`,
       `Goal note: ${result.goalSummary}`
     ].join('\n');
 
-    await navigator.clipboard.writeText(text);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 1800);
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopied(true);
+      setCopyFailed(false);
+      setTimeout(() => setCopied(false), 1800);
+    } catch {
+      setCopyFailed(true);
+      setTimeout(() => setCopyFailed(false), 2500);
+    }
   };
 
   return (
@@ -37,14 +45,19 @@ export function ResultsCard({ values }: { values: CalculatorInput }) {
             Use this as your starting estimate, then adjust based on weekly trends and tolerance.
           </p>
         </div>
-        <button
-          type="button"
-          disabled={!result}
-          onClick={copyResults}
-          className="rounded-lg border border-slate-300 px-3 py-2 text-xs font-medium text-slate-700 transition hover:border-clinical-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clinical-600 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-        >
-          {copied ? 'Copied' : 'Copy results'}
-        </button>
+        <div className="flex flex-col items-end gap-1">
+          <button
+            type="button"
+            disabled={!result}
+            onClick={() => { void copyResults(); }}
+            className="rounded-lg border border-slate-300 px-3 py-2 text-xs font-medium text-slate-700 transition hover:border-clinical-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clinical-600 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+          >
+            {copied ? 'Copied' : 'Copy results'}
+          </button>
+          {copyFailed ? (
+            <p className="text-xs text-red-600">Copy failed — please copy manually.</p>
+          ) : null}
+        </div>
       </div>
 
       {!isAdult ? (
@@ -76,6 +89,15 @@ export function ResultsCard({ values }: { values: CalculatorInput }) {
                 {result.targetRange.min}-{result.targetRange.max} kcal/day
               </dd>
               <p className="mt-2 text-sm text-slate-600">{result.goalSummary}</p>
+            </div>
+            <div className="rounded-xl border border-slate-200 bg-slate-50 p-4 sm:col-span-2">
+              <dt className="text-xs font-semibold uppercase tracking-wide text-slate-600">Practical protein range</dt>
+              <dd className="mt-1 text-2xl font-semibold text-slate-900">
+                {result.proteinRangeGrams.min}–{result.proteinRangeGrams.max} g/day
+              </dd>
+              <p className="mt-2 text-sm text-slate-600">
+                Based on 1.6–2.2 g per kg bodyweight — a standard evidence-based range for active adults and rehab contexts.
+              </p>
             </div>
           </dl>
 
