@@ -95,6 +95,14 @@ export function calculateGoalRange(maintenanceCalories: number, goal: Goal) {
   };
 }
 
+export function calculateProteinRange(input: CalculatorInput) {
+  const weightKg = toKg(input.weight, input.unit);
+  return {
+    min: Math.round(weightKg * 1.6),
+    max: Math.round(weightKg * 2.2)
+  };
+}
+
 export function calculateResult(input: CalculatorInput): CalculatorResult {
   const restingCalories = Math.round(calculateRestingCalories(input));
   const maintenanceCalories = Math.round(calculateMaintenanceCalories(input));
@@ -103,7 +111,8 @@ export function calculateResult(input: CalculatorInput): CalculatorResult {
     restingCalories,
     maintenanceCalories,
     targetRange: calculateGoalRange(maintenanceCalories, input.goal),
-    goalSummary: getGoalSummary(input.goal)
+    goalSummary: getGoalSummary(input.goal),
+    proteinRangeGrams: calculateProteinRange(input)
   };
 }
 

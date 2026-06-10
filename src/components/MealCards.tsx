@@ -48,6 +48,7 @@ function buildTemplateCopy(template: CalorieTemplate): string {
 
 export function MealCards() {
   const [copiedId, setCopiedId] = useState<string | null>(null);
+  const [copyFailedId, setCopyFailedId] = useState<string | null>(null);
   const [activeId, setActiveId] = useState(calorieTemplates[0]?.id ?? '');
 
   const activeTemplate = useMemo(
@@ -56,9 +57,15 @@ export function MealCards() {
   );
 
   const copyTemplate = async (template: CalorieTemplate) => {
-    await navigator.clipboard.writeText(buildTemplateCopy(template));
-    setCopiedId(template.id);
-    window.setTimeout(() => setCopiedId(null), 2000);
+    try {
+      await navigator.clipboard.writeText(buildTemplateCopy(template));
+      setCopiedId(template.id);
+      setCopyFailedId(null);
+      window.setTimeout(() => setCopiedId(null), 2000);
+    } catch {
+      setCopyFailedId(template.id);
+      window.setTimeout(() => setCopyFailedId(null), 2500);
+    }
   };
 
   if (!activeTemplate) return null;
@@ -97,15 +104,20 @@ export function MealCards() {
             <h3 className="text-lg font-semibold text-slate-900">{activeTemplate.title}</h3>
             <p className="mt-1 text-xs font-medium uppercase tracking-wide text-slate-500">{activeTemplate.shortLabel}</p>
           </div>
-          <button
-            type="button"
-            onClick={() => {
-              void copyTemplate(activeTemplate);
-            }}
-            className="rounded-lg border border-slate-300 px-3 py-1.5 text-xs font-medium text-slate-700 transition hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clinical-600 focus-visible:ring-offset-2"
-          >
-            {copiedId === activeTemplate.id ? 'Copied' : 'Copy template'}
-          </button>
+          <div className="flex flex-col items-end gap-1">
+            <button
+              type="button"
+              onClick={() => {
+                void copyTemplate(activeTemplate);
+              }}
+              className="rounded-lg border border-slate-300 px-3 py-1.5 text-xs font-medium text-slate-700 transition hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clinical-600 focus-visible:ring-offset-2"
+            >
+              {copiedId === activeTemplate.id ? 'Copied' : 'Copy template'}
+            </button>
+            {copyFailedId === activeTemplate.id ? (
+              <p className="text-xs text-red-600">Copy failed — please copy manually.</p>
+            ) : null}
+          </div>
         </div>
 
         <div className="mt-4 grid gap-3 sm:grid-cols-2">
