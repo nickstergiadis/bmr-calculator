@@ -1,0 +1,79 @@
+name: Build WordPress Plugin
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build WordPress widget
+        run: npm run build:widget
+
+      - name: Create plugin folder
+        run: |
+          mkdir -p restore-bmr-calculator/assets
+          cp wordpress-plugin/assets/bmr-calculator-widget.js restore-bmr-calculator/assets/
+
+      - name: Create WordPress plugin PHP file
+        run: |
+          cat > restore-bmr-calculator/restore-bmr-calculator.php <<'PHP'
+          <?php
+          /**
+           * Plugin Name: Restore BMR Calculator
+           * Description: Adds the Restore at Home BMR calculator using the [bmr_calculator] shortcode.
+           * Version: 0.1.0
+           * Author: Nicholas Stergiadis
+           */
+
+          if ( ! defined( 'ABSPATH' ) ) {
+              exit;
+          }
+
+          function restore_bmr_calculator_shortcode() {
+              $asset_path = plugin_dir_path( __FILE__ ) . 'assets/bmr-calculator-widget.js';
+              $asset_url  = plugin_dir_url( __FILE__ ) . 'assets/bmr-calculator-widget.js';
+
+              if ( file_exists( $asset_path ) ) {
+                  wp_enqueue_script(
+                      'restore-bmr-calculator',
+                      $asset_url,
+                      array(),
+                      filemtime( $asset_path ),
+                      true
+                  );
+              }
+
+              return '<div class="restore-bmr-calculator" data-bmr-calculator></div>';
+          }
+
+          add_shortcode(
+              'bmr_calculator',
+              'restore_bmr_calculator_shortcode'
+          );
+          PHP
+
+      - name: Create plugin ZIP
+        run: zip -r restore-bmr-calculator.zip restore-bmr-calculator
+
+      - name: Upload WordPress plugin
+        uses: actions/upload-artifact@v4
+        with:
+          name: restore-bmr-calculator
+          path: restore-bmr-calculator.zip
