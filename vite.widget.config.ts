@@ -4,6 +4,9 @@ import path from 'node:path';
 
 export default defineConfig({
   plugins: [react()],
+  define: {
+    'process.env.NODE_ENV': JSON.stringify('production')
+  },
   build: {
     outDir: 'wordpress-plugin/assets',
     emptyOutDir: false,
