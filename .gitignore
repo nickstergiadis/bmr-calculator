@@ -5,3 +5,8 @@ dist
 *.tsbuildinfo
 vite.config.js
 vite.config.d.ts
+
+# WordPress plugin build outputs
+wordpress-plugin/
+restore-bmr-calculator/
+restore-bmr-calculator.zip
