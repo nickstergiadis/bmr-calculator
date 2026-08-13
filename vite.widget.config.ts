@@ -8,7 +8,7 @@ export default defineConfig({
     outDir: 'wordpress-plugin/assets',
     emptyOutDir: false,
     lib: {
-      entry: path.resolve(__dirname, 'src/wordpress-entry.tsx'),
+      entry: path.resolve(process.cwd(), 'src/wordpress-entry.tsx'),
       name: 'RestoreBmrCalculator',
       formats: ['iife'],
       fileName: () => 'bmr-calculator-widget.js'
